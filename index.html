@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnet - Cyber Defense Intelligence Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">FN</div>
+            <div class="logo-text"><h2>Fortnet</h2><span>Cyber Defense Intelligence</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item active"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+            <a href="osint.html" class="nav-item"><span class="nav-icon">◉</span><span>OSINT Collection</span></a>
+            <a href="analysis.html" class="nav-item"><span class="nav-icon">⌕</span><span>Threat Analysis</span></a>
+            <a href="threat-management.html" class="nav-item"><span class="nav-icon">⚠</span><span>Threat Management</span></a>
+            <a href="alerts.html" class="nav-item"><span class="nav-icon">!</span><span>Alerts & Monitoring</span></a>
+            <a href="iocs.html" class="nav-item"><span class="nav-icon">◈</span><span>IOC Repository</span></a>
+            <a href="reports.html" class="nav-item"><span class="nav-icon">▤</span><span>Reports</span></a>
+        </nav>
+        <div class="sidebar-bottom">
+            <a href="login.html" class="nav-item"><span class="nav-icon">↪</span><span>Logout</span></a>
+        </div>
+    </aside>
+    <main class="main-content">
+        <header class="top-header">
+            <div><h1>Fortnet Command Dashboard</h1><p>Monitor, analyze and manage cyber threats through live OSINT intelligence.</p></div>
+            <div class="header-meta">
+                <div class="header-status"><span class="status-dot"></span>System Online</div>
+                <div id="liveClock" class="live-clock">--</div>
+            </div>
+        </header>
+        <section class="stats-grid">
+            <div class="stat-card"><span>Total Threats</span><strong id="activeThreats">0</strong></div>
+            <div class="stat-card"><span>Active Alerts</span><strong id="alerts">0</strong></div>
+            <div class="stat-card"><span>Total IOCs</span><strong id="iocs">0</strong></div>
+            <div class="stat-card"><span>Users</span><strong id="users">0</strong></div>
+        </section>
+        <section class="content-card">
+            <div class="section-header">
+                <div><h2>Threat Severity Distribution</h2><p>Current distribution of detected threats.</p></div>
+            </div>
+            <div class="severity-chart">
+                <div class="bar-row"><span>Low</span><div class="bar"><div id="lowBar" style="width:0%"></div></div><strong id="lowCount">0</strong></div>
+                <div class="bar-row"><span>Medium</span><div class="bar"><div id="mediumBar" style="width:0%"></div></div><strong id="mediumCount">0</strong></div>
+                <div class="bar-row"><span>High</span><div class="bar"><div id="highBar" style="width:0%"></div></div><strong id="highCount">0</strong></div>
+                <div class="bar-row"><span>Critical</span><div class="bar"><div id="criticalBar" style="width:0%"></div></div><strong id="criticalCount">0</strong></div>
+            </div>
+        </section>
+        <section class="content-card">
+            <div class="section-header">
+                <div><h2>Recent Threats</h2><p>Latest detected indicators.</p></div>
+                <a href="threat-management.html">View All</a>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Indicator</th><th>Type</th><th>Threat</th><th>Risk</th><th>Severity</th><th>Status</th></tr></thead>
+                    <tbody id="recentThreats"><tr><td colspan="6">No threats detected yet.</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+        <section class="content-card">
+            <div class="section-header">
+                <div><h2>Fortnet Modules</h2><p>Access each intelligence module separately.</p></div>
+            </div>
+            <div class="module-grid">
+                <a href="osint.html" class="module-card"><div class="module-icon">◉</div><h3>OSINT Collection</h3><p>Collect intelligence from public threat intelligence sources.</p><span>Open Module →</span></a>
+                <a href="analysis.html" class="module-card"><div class="module-icon">⌕</div><h3>Threat Analysis</h3><p>Analyze URLs, IP addresses, domains and file hashes.</p><span>Open Module →</span></a>
+                <a href="threat-management.html" class="module-card"><div class="module-icon">⚠</div><h3>Threat Management</h3><p>Manage detected threats, severity levels and risk scores.</p><span>Open Module →</span></a>
+                <a href="alerts.html" class="module-card"><div class="module-icon">!</div><h3>Alerts & Monitoring</h3><p>Monitor active security alerts and threat notifications.</p><span>Open Module →</span></a>
+                <a href="iocs.html" class="module-card"><div class="module-icon">◈</div><h3>IOC Repository</h3><p>View and manage indicators of compromise collected by Fortnet.</p><span>Open Module →</span></a>
+                <a href="reports.html" class="module-card"><div class="module-icon">▤</div><h3>Reports</h3><p>Generate and review cyber threat intelligence reports.</p><span>Open Module →</span></a>
+            </div>
+        </section>
+        <section class="content-card">
+            <div class="section-header">
+                <div><h2>Fortnet Watchlist</h2><p>Track critical assets and active investigations in real time.</p></div>
+                <button id="clearWatchlist" type="button" class="secondary-btn">Clear List</button>
+            </div>
+            <form id="watchlistForm" class="watchlist-form">
+                <input type="text" id="watchlistName" placeholder="Asset or target name" required>
+                <select id="watchlistSeverity"><option value="Critical">Critical</option><option value="High">High</option><option value="Medium" selected>Medium</option><option value="Low">Low</option></select>
+                <select id="watchlistStatus"><option value="Monitoring">Monitoring</option><option value="Escalated">Escalated</option><option value="Contained">Contained</option><option value="Resolved">Resolved</option></select>
+                <textarea id="watchlistNotes" rows="2" placeholder="Add notes or investigation context"></textarea>
+                <button type="submit" class="primary-btn compact-btn">Add to Watchlist</button>
+            </form>
+            <div class="watchlist-summary">
+                <div class="mini-stat"><span>Tracked</span><strong id="watchlistCount">0</strong></div>
+                <div class="mini-stat"><span>Critical</span><strong id="watchlistCritical">0</strong></div>
+                <div class="mini-stat"><span>Monitoring</span><strong id="watchlistMonitoring">0</strong></div>
+            </div>
+            <div id="watchlistList" class="watchlist-list"></div>
+        </section>
+        <section class="content-card">
+            <div class="section-header"><div><h2>Incident Pulse</h2><p>Real-time operational snapshot for the current shift.</p></div></div>
+            <div class="pulse-grid">
+                <div class="pulse-card critical-pulse"><span>Escalated</span><strong id="pulseEscalated">0</strong><small>Priority incidents</small></div>
+                <div class="pulse-card"><span>Resolved</span><strong id="pulseResolved">0</strong><small>Closed today</small></div>
+                <div class="pulse-card"><span>Response SLA</span><strong id="pulseSla">92%</strong><small>On-track compliance</small></div>
+                <div class="pulse-card"><span>Threat Feed</span><strong id="pulseFeed">Live</strong><small>Updated every 30s</small></div>
+            </div>
+        </section>
+        <section class="content-card">
+            <div class="section-header"><div><h2>Threat Source Monitor</h2><p>Regional threat activity overview.</p></div></div>
+            <div class="source-summary">
+                <div class="mini-stat"><span>Critical Sources</span><strong id="sourceCritical">0</strong></div>
+                <div class="mini-stat"><span>Monitored Sources</span><strong id="sourceMonitored">0</strong></div>
+            </div>
+            <div id="threatSourceList" class="geo-grid"></div>
+        </section>
+    </main>
+</div>
+<script src="script.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

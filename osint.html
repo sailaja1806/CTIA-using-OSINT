@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnet - OSINT Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <aside class="sidebar">
+        <div class="sidebar-logo"><div class="logo-icon">FN</div><div><h2>Fortnet</h2><span>OSINT Intelligence</span></div></div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+            <a href="osint.html" class="nav-item active"><span class="nav-icon">◉</span><span>OSINT Collection</span></a>
+            <a href="analysis.html" class="nav-item"><span class="nav-icon">⌕</span><span>Threat Analysis</span></a>
+            <a href="threat-management.html" class="nav-item"><span class="nav-icon">⚠</span><span>Threat Management</span></a>
+            <a href="alerts.html" class="nav-item"><span class="nav-icon">!</span><span>Alerts & Monitoring</span></a>
+            <a href="iocs.html" class="nav-item"><span class="nav-icon">◈</span><span>IOC Repository</span></a>
+            <a href="reports.html" class="nav-item"><span class="nav-icon">▤</span><span>Reports</span></a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div><p class="small-title">MODULE 01</p><h1>OSINT Collection</h1><p>Collect and organize public cyber threat intelligence.</p></div>
+            <div class="status-badge"><span class="status-dot"></span>Collection Ready</div>
+        </header>
+        <section class="panel">
+            <div class="panel-header">
+                <div><p class="small-title">INTELLIGENCE SOURCES</p><h2>Public Threat Sources</h2></div>
+                <button id="collectBtn" class="primary-btn compact-btn">Collect Intelligence</button>
+            </div>
+            <div class="source-grid">
+                <div class="source-card"><div class="source-status">●</div><h3>CISA</h3><p>Cybersecurity advisories and public alerts.</p><span>OSINT Source</span></div>
+                <div class="source-card"><div class="source-status">●</div><h3>NVD</h3><p>Vulnerability and CVE intelligence.</p><span>Vulnerability Feed</span></div>
+                <div class="source-card"><div class="source-status">●</div><h3>Threat Feeds</h3><p>Publicly available threat intelligence indicators.</p><span>Intelligence Feed</span></div>
+                <div class="source-card"><div class="source-status">●</div><h3>Security Blogs</h3><p>Public cybersecurity research and reports.</p><span>Open Source</span></div>
+            </div>
+        </section>
+        <section class="panel">
+            <div class="panel-header"><div><p class="small-title">COLLECTION RESULTS</p><h2>Recent Intelligence</h2></div></div>
+            <div id="osintList" class="threat-list"><p class="empty-message">Click "Collect Intelligence" to begin.</p></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script src="osint.js"></script>
+</body>
+</html>

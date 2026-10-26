@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnet - Threat Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo"><div class="logo-icon">FN</div><div><h2>Fortnet</h2><span>Cyber Defense Intelligence</span></div></div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+            <a href="osint.html" class="nav-item"><span class="nav-icon">◉</span><span>OSINT Collection</span></a>
+            <a href="analysis.html" class="nav-item"><span class="nav-icon">⌕</span><span>Threat Analysis</span></a>
+            <a href="threat-management.html" class="nav-item active"><span class="nav-icon">⚠</span><span>Threat Management</span></a>
+            <a href="alerts.html" class="nav-item"><span class="nav-icon">!</span><span>Alerts & Monitoring</span></a>
+            <a href="iocs.html" class="nav-item"><span class="nav-icon">◈</span><span>IOC Repository</span></a>
+            <a href="reports.html" class="nav-item"><span class="nav-icon">▤</span><span>Reports</span></a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+    <main class="main-content">
+        <header class="top-header"><div><h1>Threat Management</h1><p>Manage, classify and monitor identified cyber threats</p></div></header>
+        <section class="stats-grid">
+            <div class="stat-card"><span>Total Threats</span><strong id="totalThreats">0</strong></div>
+            <div class="stat-card"><span>Critical</span><strong id="criticalThreats">0</strong></div>
+            <div class="stat-card"><span>High</span><strong id="highThreats">0</strong></div>
+            <div class="stat-card"><span>Medium</span><strong id="mediumThreats">0</strong></div>
+            <div class="stat-card"><span>Low</span><strong id="lowThreats">0</strong></div>
+        </section>
+        <section class="content-card">
+            <h2>Manage New Threat</h2>
+            <p>Enter an IP address, domain, URL or file hash to classify and assign a severity level.</p>
+            <div class="input-row"><input type="text" id="threatInput" placeholder="Enter URL, IP, domain or hash"><button onclick="analyzeThreat()">Analyze Threat</button></div>
+        </section>
+        <section class="content-card" id="resultCard" style="display:none;">
+            <h2>Threat Result</h2>
+            <div class="result-grid">
+                <div><label>Indicator</label><p id="resultIndicator">-</p></div>
+                <div><label>Threat Type</label><p id="resultType">-</p></div>
+                <div><label>Risk Score</label><p id="resultScore">-</p></div>
+                <div><label>Severity</label><p id="resultSeverity">-</p></div>
+                <div><label>IOC Type</label><p id="resultIOC">-</p></div>
+                <div><label>Status</label><p id="resultStatus">-</p></div>
+            </div>
+        </section>
+        <section class="content-card">
+            <h2>Threat Severity Distribution</h2>
+            <div class="severity-chart">
+                <div class="bar-row"><span>Critical</span><div class="bar"><div id="criticalBar" style="width:0%"></div></div><strong id="criticalCount">0</strong></div>
+                <div class="bar-row"><span>High</span><div class="bar"><div id="highBar" style="width:0%"></div></div><strong id="highCount">0</strong></div>
+                <div class="bar-row"><span>Medium</span><div class="bar"><div id="mediumBar" style="width:0%"></div></div><strong id="mediumCount">0</strong></div>
+                <div class="bar-row"><span>Low</span><div class="bar"><div id="lowBar" style="width:0%"></div></div><strong id="lowCount">0</strong></div>
+            </div>
+        </section>
+        <section class="content-card">
+            <h2>Managed Threats</h2>
+            <div class="table-container">
+                <table><thead><tr><th>Indicator</th><th>Type</th><th>Threat</th><th>Risk</th><th>Severity</th><th>Status</th></tr></thead>
+                    <tbody id="threatTable"><tr><td colspan="6">No threats detected</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="script.js"></script>
+<script src="threat-management.js"></script>
+</body>
+</html>

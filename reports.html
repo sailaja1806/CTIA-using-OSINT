@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnet - Reports</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <aside class="sidebar">
+        <div class="sidebar-logo"><div class="logo-icon">FN</div><div><h2>Fortnet</h2><span>OSINT Intelligence</span></div></div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+            <a href="osint.html" class="nav-item"><span class="nav-icon">◉</span><span>OSINT Collection</span></a>
+            <a href="analysis.html" class="nav-item"><span class="nav-icon">⌕</span><span>Threat Analysis</span></a>
+            <a href="threat-management.html" class="nav-item"><span class="nav-icon">⚠</span><span>Threat Management</span></a>
+            <a href="alerts.html" class="nav-item"><span class="nav-icon">!</span><span>Alerts & Monitoring</span></a>
+            <a href="iocs.html" class="nav-item"><span class="nav-icon">◈</span><span>IOC Repository</span></a>
+            <a href="reports.html" class="nav-item active"><span class="nav-icon">▤</span><span>Reports</span></a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+    <main class="main-content">
+        <header class="dashboard-header"><div><p class="small-title">REPORTING</p><h1>Intelligence Reports</h1><p>Fortnet threat intelligence statistics and summaries.</p></div></header>
+        <section class="stats-grid">
+            <div class="stat-card"><div class="stat-icon">⚠</div><div><p>Total Threats</p><h2 id="reportThreats">0</h2></div></div>
+            <div class="stat-card"><div class="stat-icon">!</div><div><p>Critical</p><h2 id="reportCritical">0</h2></div></div>
+            <div class="stat-card"><div class="stat-icon">◉</div><div><p>High</p><h2 id="reportHigh">0</h2></div></div>
+            <div class="stat-card"><div class="stat-icon">◎</div><div><p>IOCs</p><h2 id="reportIOCs">0</h2></div></div>
+        </section>
+        <section class="panel">
+            <div class="panel-header"><div><p class="small-title">THREAT DISTRIBUTION</p><h2>Severity Summary</h2></div></div>
+            <div class="report-grid">
+                <div class="report-row"><span>Critical</span><strong id="reportCritical2">0</strong></div>
+                <div class="report-row"><span>High</span><strong id="reportHigh2">0</strong></div>
+                <div class="report-row"><span>Medium</span><strong id="reportMedium">0</strong></div>
+                <div class="report-row"><span>Low</span><strong id="reportLow">0</strong></div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script src="reports.js"></script>
+</body>
+</html>
